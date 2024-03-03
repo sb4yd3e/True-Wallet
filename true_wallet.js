@@ -34,9 +34,9 @@ module.exports = async (url)=>{
         }).catch(error=>{
             if (error.response.data.data) {
                 console.log("ALready accept")
-            } else [
+            } else {
                 console.log("Error by something")
-            ]
+            }
         })
     } catch(error) {
         console.log("Already accept?")
