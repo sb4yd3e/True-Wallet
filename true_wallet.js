@@ -19,17 +19,20 @@ module.exports = async (url)=>{
         mobile: phonenumber,
         voucher_hash: matchResult[0]
     }
-    let urls='https://gift.truemoney.com/campaign/vouchers/'+matchResult[0]+'/redeem';
     try {
-        await axios.post(urls,body, {
+        await axios.post(`https://gift.truemoney.com/campaign/vouchers/${matchResult[0]}/redeem`,body, {
             headers: headers
         }).then(async res=>{
             if (res.data.status.message == 'success') {
                 console.log("success!");
                 console.log("voucher_id : " + res.data.data.voucher.voucher_id);
                 console.log("amount_baht : " + res.data.data.voucher.amount_baht);
-                console.log("detail : " + res.data.data.voucher.detail);
-                console.log("profile_pic : " + res.data.data.tickets.profile_pic);
+                if (res.data.data.voucher.detail.length>0) {
+                    console.log("detail : " + res.data.data.voucher.detail);
+                };
+                if (res.data.data.tickets.profile_pic) {
+                    console.log("profile_pic : " + res.data.data.tickets.profile_pic);
+                };
             };
         }).catch(error=>{
             if (error.response.data.data) {
