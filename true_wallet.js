@@ -30,14 +30,7 @@ module.exports = async (url)=>{
                 console.log("amount_baht : " + res.data.data.voucher.amount_baht);
                 console.log("detail : " + res.data.data.voucher.detail);
                 console.log("profile_pic : " + res.data.data.tickets.profile_pic);
-
-            } else {
-                console.log("unsuccess!");
-                console.log("voucher_id : " + res.data.data.voucher.voucher_id);
-                console.log("amount_baht : " + res.data.data.voucher.amount_baht);
-                console.log("detail : " + res.data.data.voucher.detail);
-                console.log("profile_pic : " + res.data.data.tickets[0].profile_pic);
-            }
+            };
         }).catch(error=>{
             if (error.response.data.data) {
                 console.log("ALready accept")
